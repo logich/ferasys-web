@@ -1,0 +1,16 @@
+A feral information system is part of an information system developed by individuals and groups to help with day-to-day activities that is not condoned by management.[1] It is called feral because it circumvents existing information technology systems or works around key system architecture.[2]
+
+A feral information system can be written for a variety of reasons. The general reason given is that they are ways of working around existing management information systems in order to support day-to-day work.[3] Feral information systems are sometimes referred to as shadow systems.
+
+Reasons for feral information systems include: poor training practices in IT firms, inadequate systems, complex political relationships and a host of related issues.[2] Research has linked feral information systems to poor operational planning.[4]
+
+References
+[1] Houghton, L. and Kerr, D.V. (2006). A study into the creation of feral information systems as a response to an ERP implementation within the supply chain of a large Government owned corporation. The International Journal of Internet and Enterprise Management, 4(2):135–147.
+[2] Kerr, D., Houghton, L. and Burgess K. (2007). Power Relationships That Lead To The Development Of Feral Systems. Australasian Journal of Information System, 14(2):141–152.
+[3] Thatte, S. and Grainger, N. (2010). Feral Systems: Why Users Write Them and How They Add Value 5th Pre-ICIS workshop on ES Research, St Louis, USA.
+[4] Kerr, D.V., and Houghton, L. (2010). Just in time or Just in case: A Case study on the impact of context in ERP implementations. Australasian Journal of Information Systems, 16(2):5–16.
+
+
+
+FROM https://en.wikipedia.org/wiki/Feral_information_systems
+
