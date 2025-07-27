@@ -1,0 +1,85 @@
+name: Deploy Feral Systems Website
+
+on:
+  push:
+    branches: [ main ]
+    paths-ignore:
+      - 'README.md'
+      - '.gitignore'
+      - 'deploy.sh.template'
+      - 'deploy.sh'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-1
+    
+    - name: Sync to S3
+      run: |
+        echo "🐺 Deploying Feral Systems Website..."
+        
+        # Sync files to S3 with appropriate content types and cache headers
+        aws s3 sync . s3://${{ secrets.S3_BUCKET }} \
+            --exclude "*.sh" \
+            --exclude "*.DS_Store" \
+            --exclude "new-index.html" \
+            --exclude "index-original-backup.html" \
+            --exclude "Feral Systems.webarchive" \
+            --exclude "FeralSystems/*" \
+            --exclude ".git/*" \
+            --exclude ".github/*" \
+            --exclude "README.md" \
+            --cache-control "max-age=31536000" \
+            --metadata-directive REPLACE \
+            --delete
+        
+        # Set specific cache headers for HTML files (shorter cache)
+        aws s3 cp index.html s3://${{ secrets.S3_BUCKET }}/index.html \
+            --content-type "text/html" \
+            --cache-control "max-age=300"
+        
+        # Set specific cache headers for CSS
+        aws s3 cp styles.css s3://${{ secrets.S3_BUCKET }}/styles.css \
+            --content-type "text/css" \
+            --cache-control "max-age=31536000"
+        
+        # Set specific cache headers for images
+        aws s3 cp ferasys.png s3://${{ secrets.S3_BUCKET }}/ferasys.png \
+            --content-type "image/png" \
+            --cache-control "max-age=31536000"
+        
+        aws s3 cp wolf.jpg s3://${{ secrets.S3_BUCKET }}/wolf.jpg \
+            --content-type "image/jpeg" \
+            --cache-control "max-age=31536000"
+        
+        aws s3 cp wolf.webp s3://${{ secrets.S3_BUCKET }}/wolf.webp \
+            --content-type "image/webp" \
+            --cache-control "max-age=31536000"
+    
+    - name: Invalidate CloudFront
+      run: |
+        echo "🔄 Invalidating CloudFront cache..."
+        
+        INVALIDATION_ID=$(aws cloudfront create-invalidation \
+            --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} \
+            --paths "/*" \
+            --query 'Invalidation.Id' \
+            --output text)
+        
+        echo "✅ CloudFront invalidation created: $INVALIDATION_ID"
+        echo "⏳ Cache invalidation may take 5-15 minutes to complete."
+    
+    - name: Deployment complete
+      run: |
+        echo "🎉 Deployment complete!"
+        echo "🌐 Your website should be updated shortly."
