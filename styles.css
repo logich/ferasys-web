@@ -625,6 +625,22 @@
             font-size: 1.05rem;
         }
 
+        /* Speaking section specific styles */
+        .speaking-card a {
+            transition: all 0.3s ease;
+            border-radius: 6px;
+            padding: 0.5rem 1rem;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .speaking-card a:hover {
+            background: rgba(0, 212, 255, 0.2);
+            border-color: #00d4ff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 212, 255, 0.3);
+        }
+
         /* Contact Section */
         .contact {
             background: rgba(168, 85, 247, 0.05);
