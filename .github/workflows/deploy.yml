@@ -29,7 +29,7 @@ jobs:
         echo "🐺 Deploying Feral Systems Website..."
         
         # Sync files to S3 with appropriate content types and cache headers
-        aws s3 sync . s3://${{ secrets.S3_BUCKET }} \
+        aws s3 sync . s3://INVALID_BUCKET_NAME \
             --exclude "*.sh" \
             --exclude "*.DS_Store" \
             --exclude "new-index.html" \
