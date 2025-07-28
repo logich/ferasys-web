@@ -117,6 +117,36 @@ The website positions Feral Systems as:
 - **Scientific**: Evidence-based approach using behavioral economics and machine learning
 - **Integrative**: Helping organizations optimize rather than eliminate valuable workaround systems
 
+## 🔒 Version Control & Security
+
+### Protected Files
+The following files are excluded from version control for security:
+- `deploy.sh` - Contains actual AWS bucket names and distribution IDs
+- `.env*` - Environment variables and secrets
+- `.aws/` - AWS credentials and configuration
+- `*.key`, `*.pem` - Private keys and certificates
+
+### Safe Deployment
+1. Copy `deploy.sh.template` to `deploy.sh`
+2. Update the configuration variables with your actual values
+3. Never commit the actual `deploy.sh` file
+4. Use environment variables for sensitive data when possible
+
+### Git Best Practices
+```bash
+# Check what files will be committed
+git status
+
+# Add specific files only
+git add index.html styles.css
+
+# Create meaningful commit messages
+git commit -m "Update hero section content and styling"
+
+# Push to remote repository
+git push origin main
+```
+
 ## 🔄 Maintenance
 
 ### Regular Updates
@@ -130,6 +160,7 @@ The website positions Feral Systems as:
 - Monitor for security vulnerabilities
 - Keep AWS infrastructure updated
 - Review and update security headers
+- Rotate AWS credentials periodically
 
 ## 📞 Support
 
