@@ -735,6 +735,577 @@
             }
         }
 
+        /* New Sections: Examples, Lifecycle, Root Causes, etc. */
+        .subsection-title {
+            font-size: 2rem;
+            font-family: 'Lastica', 'Anonymous Pro', monospace;
+            font-weight: bold;
+            color: #a855f7;
+            margin: 3rem 0 2rem 0;
+            text-align: center;
+        }
+
+        /* Examples Grid */
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+
+        .example-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .example-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(45deg, #00d4ff, #a855f7);
+        }
+
+        .example-card:hover {
+            transform: translateY(-5px);
+            border-color: #00d4ff;
+            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.2);
+        }
+
+        .example-card h4 {
+            color: #00d4ff;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            font-family: 'Lastica', 'Anonymous Pro', monospace;
+        }
+
+        .example-card p {
+            color: #e2e8f0;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        /* Lifecycle Stages */
+        .lifecycle-stages {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+
+        .stage-card {
+            background: rgba(168, 85, 247, 0.1);
+            backdrop-filter: blur(15px);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .stage-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(45deg, #a855f7, #00d4ff);
+        }
+
+        .stage-card:hover {
+            transform: translateY(-5px);
+            border-color: #a855f7;
+            box-shadow: 0 10px 25px rgba(168, 85, 247, 0.2);
+        }
+
+        .stage-card h4 {
+            color: #a855f7;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            font-family: 'Lastica', 'Anonymous Pro', monospace;
+        }
+
+        .stage-card p {
+            color: #e2e8f0;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .stage-card .indicator {
+            display: block;
+            color: #00d4ff;
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-top: 1rem;
+            font-style: italic;
+        }
+
+        /* Root Causes */
+        .cause-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cause-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem 2rem;
+            border-radius: 10px;
+            border-left: 4px solid #00d4ff;
+            color: #e2e8f0;
+            line-height: 1.7;
+            transition: all 0.3s ease;
+        }
+
+        .cause-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-left-color: #a855f7;
+            transform: translateX(5px);
+        }
+
+        .cause-item strong {
+            color: #00d4ff;
+            font-size: 1.1rem;
+        }
+
+        /* Feral Deep Dive Section */
+        .feral-deepdive {
+            background: rgba(168, 85, 247, 0.03);
+        }
+
+        /* Spectrum */
+        .spectrum {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .spectrum-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 2px solid;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .spectrum-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+        }
+
+        .spectrum-card.beneficial {
+            border-color: rgba(81, 207, 102, 0.4);
+        }
+
+        .spectrum-card.beneficial::before {
+            background: linear-gradient(45deg, #51cf66, #00d4ff);
+        }
+
+        .spectrum-card.beneficial:hover {
+            border-color: #51cf66;
+            box-shadow: 0 15px 35px rgba(81, 207, 102, 0.2);
+        }
+
+        .spectrum-card.neutral {
+            border-color: rgba(255, 193, 7, 0.4);
+        }
+
+        .spectrum-card.neutral::before {
+            background: linear-gradient(45deg, #ffc107, #ff9800);
+        }
+
+        .spectrum-card.neutral:hover {
+            border-color: #ffc107;
+            box-shadow: 0 15px 35px rgba(255, 193, 7, 0.2);
+        }
+
+        .spectrum-card.harmful {
+            border-color: rgba(255, 107, 107, 0.4);
+        }
+
+        .spectrum-card.harmful::before {
+            background: linear-gradient(45deg, #ff6b6b, #ff5252);
+        }
+
+        .spectrum-card.harmful:hover {
+            border-color: #ff6b6b;
+            box-shadow: 0 15px 35px rgba(255, 107, 107, 0.2);
+        }
+
+        .spectrum-card h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-family: 'Lastica', 'Anonymous Pro', monospace;
+        }
+
+        .spectrum-card.beneficial h4 {
+            color: #51cf66;
+        }
+
+        .spectrum-card.neutral h4 {
+            color: #ffc107;
+        }
+
+        .spectrum-card.harmful h4 {
+            color: #ff6b6b;
+        }
+
+        .spectrum-card ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .spectrum-card li {
+            color: #e2e8f0;
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .spectrum-card li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .spectrum-card.beneficial li::before {
+            color: #51cf66;
+        }
+
+        .spectrum-card.neutral li::before {
+            color: #ffc107;
+        }
+
+        .spectrum-card.harmful li::before {
+            color: #ff6b6b;
+        }
+
+        .spectrum-card .verdict {
+            color: #00d4ff;
+            font-weight: 600;
+            font-style: italic;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Warning Signs Grid */
+        .signs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+
+        .sign-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sign-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(45deg, #00d4ff, #a855f7);
+        }
+
+        .sign-card:hover {
+            transform: translateY(-5px);
+            border-color: #00d4ff;
+            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.2);
+        }
+
+        .sign-card h4 {
+            color: #00d4ff;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            font-family: 'Lastica', 'Anonymous Pro', monospace;
+        }
+
+        .sign-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sign-card li {
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .sign-card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #a855f7;
+            font-weight: bold;
+        }
+
+        /* Types Grid */
+        .type-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+
+        .type-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .type-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(45deg, #a855f7, #00d4ff);
+        }
+
+        .type-card:hover {
+            transform: translateY(-5px);
+            border-color: #a855f7;
+            box-shadow: 0 10px 25px rgba(168, 85, 247, 0.2);
+        }
+
+        .type-card h4 {
+            color: #a855f7;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            font-family: 'Lastica', 'Anonymous Pro', monospace;
+        }
+
+        .type-card p {
+            color: #e2e8f0;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .type-card .risk {
+            display: block;
+            color: #ff6b6b;
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Impact Section */
+        .impact-dual {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            margin-top: 2.5rem;
+        }
+
+        .negative-impacts,
+        .positive-impacts {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 2px solid;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .negative-impacts {
+            border-color: rgba(255, 107, 107, 0.3);
+        }
+
+        .negative-impacts::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(45deg, #ff6b6b, #ff5252);
+        }
+
+        .negative-impacts:hover {
+            border-color: #ff6b6b;
+            box-shadow: 0 15px 35px rgba(255, 107, 107, 0.15);
+        }
+
+        .positive-impacts {
+            border-color: rgba(81, 207, 102, 0.3);
+        }
+
+        .positive-impacts::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(45deg, #51cf66, #00d4ff);
+        }
+
+        .positive-impacts:hover {
+            border-color: #51cf66;
+            box-shadow: 0 15px 35px rgba(81, 207, 102, 0.15);
+        }
+
+        .negative-impacts h4 {
+            color: #ff6b6b;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            font-family: 'Lastica', 'Anonymous Pro', monospace;
+        }
+
+        .positive-impacts h4 {
+            color: #51cf66;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            font-family: 'Lastica', 'Anonymous Pro', monospace;
+        }
+
+        .negative-impacts ul,
+        .positive-impacts ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .negative-impacts li,
+        .positive-impacts li {
+            color: #e2e8f0;
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.7;
+        }
+
+        .negative-impacts li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+
+        .positive-impacts li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #51cf66;
+            font-weight: bold;
+        }
+
+        .stats-highlight {
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .stats-highlight p {
+            color: #e2e8f0;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .stats-highlight strong {
+            color: #00d4ff;
+            font-size: 1.15rem;
+        }
+
+        /* Industry Grid */
+        .industry-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+
+        .industry-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .industry-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(45deg, #00d4ff, #a855f7);
+        }
+
+        .industry-card:hover {
+            transform: translateY(-5px);
+            border-color: #00d4ff;
+            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.2);
+        }
+
+        .industry-card h4 {
+            color: #00d4ff;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            font-family: 'Lastica', 'Anonymous Pro', monospace;
+        }
+
+        .industry-card p {
+            color: #e2e8f0;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .nav-links {
@@ -790,6 +1361,33 @@
             .service-card,
             .contact-card {
                 padding: 2rem;
+            }
+
+            .examples-grid,
+            .lifecycle-stages,
+            .signs-grid,
+            .type-grid,
+            .industry-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .spectrum {
+                grid-template-columns: 1fr;
+            }
+
+            .impact-dual {
+                grid-template-columns: 1fr;
+            }
+
+            .example-card,
+            .stage-card,
+            .sign-card,
+            .type-card,
+            .industry-card,
+            .spectrum-card,
+            .negative-impacts,
+            .positive-impacts {
+                padding: 1.5rem;
             }
         }
 
