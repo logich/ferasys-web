@@ -91,21 +91,25 @@ jobs:
         # Sync images and fonts first (with long cache)
         aws s3 cp ferasys.png ${{ steps.env.outputs.S3_PATH }}/ferasys.png \
             --content-type "image/png" \
-            --cache-control "public, max-age=31536000, immutable"
+            --cache-control "public, max-age=31536000, immutable" \
+            --acl public-read
 
         aws s3 cp wolf.jpg ${{ steps.env.outputs.S3_PATH }}/wolf.jpg \
             --content-type "image/jpeg" \
-            --cache-control "public, max-age=31536000, immutable"
+            --cache-control "public, max-age=31536000, immutable" \
+            --acl public-read
 
         aws s3 cp wolf.webp ${{ steps.env.outputs.S3_PATH }}/wolf.webp \
             --content-type "image/webp" \
-            --cache-control "public, max-age=31536000, immutable"
+            --cache-control "public, max-age=31536000, immutable" \
+            --acl public-read
 
         # Upload fonts with long cache
         if [ -d "fonts" ]; then
           aws s3 sync fonts/ ${{ steps.env.outputs.S3_PATH }}/fonts/ \
               --content-type "font/woff2" \
               --cache-control "public, max-age=31536000, immutable" \
+              --acl public-read \
               --exclude "*" \
               --include "*.woff2"
         fi
@@ -115,6 +119,7 @@ jobs:
             --content-type "text/css" \
             --content-encoding "gzip" \
             --cache-control "public, max-age=31536000, immutable" \
+            --acl public-read \
             --metadata-directive REPLACE
 
         # Upload brotli compressed CSS
@@ -122,6 +127,7 @@ jobs:
             --content-type "text/css" \
             --content-encoding "br" \
             --cache-control "public, max-age=31536000, immutable" \
+            --acl public-read \
             --metadata-directive REPLACE
 
         # Upload compressed HTML (gzip version with short cache)
@@ -129,6 +135,7 @@ jobs:
             --content-type "text/html; charset=utf-8" \
             --content-encoding "gzip" \
             --cache-control "public, max-age=300, must-revalidate" \
+            --acl public-read \
             --metadata-directive REPLACE
 
         # Upload brotli compressed HTML
@@ -136,16 +143,19 @@ jobs:
             --content-type "text/html; charset=utf-8" \
             --content-encoding "br" \
             --cache-control "public, max-age=300, must-revalidate" \
+            --acl public-read \
             --metadata-directive REPLACE
 
         # Upload uncompressed versions as fallback
         aws s3 cp index.html ${{ steps.env.outputs.S3_PATH }}/index-uncompressed.html \
             --content-type "text/html; charset=utf-8" \
-            --cache-control "public, max-age=300, must-revalidate"
+            --cache-control "public, max-age=300, must-revalidate" \
+            --acl public-read
 
         aws s3 cp styles.css ${{ steps.env.outputs.S3_PATH }}/styles-uncompressed.css \
             --content-type "text/css" \
-            --cache-control "public, max-age=31536000, immutable"
+            --cache-control "public, max-age=31536000, immutable" \
+            --acl public-read
 
         echo "✅ Files synced to S3 successfully!"
     
