@@ -1,0 +1,38 @@
+<svg width="600" height="200" viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#a855f7;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#a855f7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00d4ff;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Wolf icon on left -->
+  <g id="wolfHead" transform="scale(0.6) translate(-50, 10)" fill="url(#logoGradient)">
+    <polygon points="180,140 200,100 220,140" opacity="0.9"/>
+    <polygon points="280,140 300,100 320,140" opacity="0.9"/>
+    <path d="M 200,140 L 180,180 L 170,240 L 180,290 L 220,320 L 280,320 L 320,290 L 330,240 L 320,180 L 300,140 Z" opacity="0.85"/>
+    <path d="M 210,160 L 220,200 L 210,220" stroke="#00d4ff" stroke-width="3" fill="none" opacity="0.7"/>
+    <path d="M 290,160 L 280,200 L 290,220" stroke="#00d4ff" stroke-width="3" fill="none" opacity="0.7"/>
+    <circle cx="220" cy="200" r="8" fill="#00d4ff"/>
+    <circle cx="280" cy="200" r="8" fill="#00d4ff"/>
+    <circle cx="220" cy="200" r="4" fill="#ffffff"/>
+    <circle cx="280" cy="200" r="4" fill="#ffffff"/>
+    <path d="M 240,240 L 230,260 L 250,270 L 270,260 L 260,240" fill="url(#accentGradient)" opacity="0.8"/>
+  </g>
+
+  <!-- Company name to the right -->
+  <text x="250" y="90" font-family="'Arial', sans-serif" font-size="48" font-weight="bold"
+        fill="url(#logoGradient)" letter-spacing="3">
+    FERAL SYSTEMS
+  </text>
+
+  <!-- Tagline -->
+  <text x="250" y="130" font-family="'Arial', sans-serif" font-size="18"
+        fill="#00d4ff" opacity="0.8" letter-spacing="2">
+    Adaptive Intelligence Through Behavioral Design
+  </text>
+</svg>

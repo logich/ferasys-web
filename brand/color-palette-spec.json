@@ -1,0 +1,362 @@
+{
+  "name": "Feral Systems Brand Colors",
+  "version": "1.0",
+  "colors": {
+    "primary": {
+      "cyan": {
+        "name": "Electric Cyan",
+        "hex": "#00d4ff",
+        "rgb": {
+          "r": 0,
+          "g": 212,
+          "b": 255
+        },
+        "hsl": {
+          "h": 190,
+          "s": 100,
+          "l": 50
+        },
+        "cmyk": {
+          "c": 100,
+          "m": 17,
+          "y": 0,
+          "k": 0
+        },
+        "pantone": "2985 C",
+        "usage": [
+          "Primary accent color",
+          "Interactive elements",
+          "Links and buttons",
+          "Primary headings",
+          "Icons"
+        ],
+        "accessibility": {
+          "contrast_ratio_dark_bg": 11.2,
+          "wcag_rating_dark_bg": "AAA",
+          "contrast_ratio_light_bg": 2.1,
+          "wcag_rating_light_bg": "Fail"
+        }
+      },
+      "purple": {
+        "name": "Vivid Purple",
+        "hex": "#a855f7",
+        "rgb": {
+          "r": 168,
+          "g": 85,
+          "b": 247
+        },
+        "hsl": {
+          "h": 271,
+          "s": 91,
+          "l": 65
+        },
+        "cmyk": {
+          "c": 47,
+          "m": 66,
+          "y": 0,
+          "k": 0
+        },
+        "pantone": "2665 C",
+        "usage": [
+          "Secondary accent color",
+          "Highlights and callouts",
+          "Gradient components",
+          "Borders and dividers",
+          "Secondary CTAs"
+        ],
+        "accessibility": {
+          "contrast_ratio_dark_bg": 6.5,
+          "wcag_rating_dark_bg": "AA",
+          "contrast_ratio_light_bg": 3.2,
+          "wcag_rating_light_bg": "Fail"
+        }
+      }
+    },
+    "background": {
+      "deep_navy": {
+        "name": "Deep Navy",
+        "hex": "#1a1a2e",
+        "rgb": {
+          "r": 26,
+          "g": 26,
+          "b": 46
+        },
+        "hsl": {
+          "h": 240,
+          "s": 28,
+          "l": 14
+        },
+        "usage": [
+          "Primary background (gradient start)",
+          "Dark sections",
+          "Base layer"
+        ]
+      },
+      "dark_blue": {
+        "name": "Dark Blue",
+        "hex": "#16213e",
+        "rgb": {
+          "r": 22,
+          "g": 33,
+          "b": 62
+        },
+        "hsl": {
+          "h": 224,
+          "s": 48,
+          "l": 16
+        },
+        "usage": [
+          "Background gradient middle",
+          "Section variations"
+        ]
+      },
+      "rich_blue": {
+        "name": "Rich Blue",
+        "hex": "#0f3460",
+        "rgb": {
+          "r": 15,
+          "g": 52,
+          "b": 96
+        },
+        "hsl": {
+          "h": 213,
+          "s": 73,
+          "l": 22
+        },
+        "usage": [
+          "Background gradient end",
+          "Accent backgrounds"
+        ]
+      }
+    },
+    "text": {
+      "primary": {
+        "name": "White",
+        "hex": "#ffffff",
+        "rgb": {
+          "r": 255,
+          "g": 255,
+          "b": 255
+        },
+        "usage": [
+          "Primary body text",
+          "Headings",
+          "High emphasis text"
+        ],
+        "accessibility": {
+          "contrast_ratio_dark_bg": 15.8,
+          "wcag_rating": "AAA"
+        }
+      },
+      "secondary": {
+        "name": "Light Gray",
+        "hex": "#e2e8f0",
+        "rgb": {
+          "r": 226,
+          "g": 232,
+          "b": 240
+        },
+        "hsl": {
+          "h": 214,
+          "s": 32,
+          "l": 91
+        },
+        "usage": [
+          "Subtitles",
+          "Supporting text",
+          "Captions",
+          "Less emphasized content"
+        ],
+        "accessibility": {
+          "contrast_ratio_dark_bg": 13.1,
+          "wcag_rating": "AAA"
+        }
+      }
+    },
+    "semantic": {
+      "success": {
+        "name": "Success Green",
+        "hex": "#10b981",
+        "rgb": {
+          "r": 16,
+          "g": 185,
+          "b": 129
+        },
+        "usage": [
+          "Success messages",
+          "Positive indicators",
+          "Completion states"
+        ]
+      },
+      "warning": {
+        "name": "Warning Amber",
+        "hex": "#f59e0b",
+        "rgb": {
+          "r": 245,
+          "g": 158,
+          "b": 11
+        },
+        "usage": [
+          "Warning messages",
+          "Caution states",
+          "Important notices"
+        ]
+      },
+      "error": {
+        "name": "Error Red",
+        "hex": "#ef4444",
+        "rgb": {
+          "r": 239,
+          "g": 68,
+          "b": 68
+        },
+        "usage": [
+          "Error messages",
+          "Destructive actions",
+          "Critical alerts"
+        ]
+      },
+      "info": {
+        "name": "Info Blue",
+        "hex": "#3b82f6",
+        "rgb": {
+          "r": 59,
+          "g": 130,
+          "b": 246
+        },
+        "usage": [
+          "Informational messages",
+          "Helpful tips",
+          "Neutral notifications"
+        ]
+      }
+    },
+    "gradients": {
+      "primary": {
+        "name": "Primary Gradient",
+        "css": "linear-gradient(45deg, #00d4ff, #a855f7)",
+        "angle": 45,
+        "stops": [
+          {
+            "color": "#00d4ff",
+            "position": "0%"
+          },
+          {
+            "color": "#a855f7",
+            "position": "100%"
+          }
+        ],
+        "usage": [
+          "Primary buttons",
+          "Featured headings",
+          "Hero elements",
+          "Call-to-action components"
+        ]
+      },
+      "accent": {
+        "name": "Accent Gradient",
+        "css": "linear-gradient(90deg, #a855f7, #00d4ff)",
+        "angle": 90,
+        "stops": [
+          {
+            "color": "#a855f7",
+            "position": "0%"
+          },
+          {
+            "color": "#00d4ff",
+            "position": "100%"
+          }
+        ],
+        "usage": [
+          "Borders",
+          "Dividers",
+          "Decorative elements"
+        ]
+      },
+      "background": {
+        "name": "Background Gradient",
+        "css": "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)",
+        "angle": 135,
+        "stops": [
+          {
+            "color": "#1a1a2e",
+            "position": "0%"
+          },
+          {
+            "color": "#16213e",
+            "position": "50%"
+          },
+          {
+            "color": "#0f3460",
+            "position": "100%"
+          }
+        ],
+        "usage": [
+          "Page backgrounds",
+          "Section backgrounds",
+          "Main canvas"
+        ]
+      }
+    }
+  },
+  "accessibility": {
+    "contrast_matrix": [
+      {
+        "foreground": "#ffffff",
+        "background": "#1a1a2e",
+        "ratio": 15.8,
+        "rating": "AAA",
+        "passes_aa": true,
+        "passes_aaa": true
+      },
+      {
+        "foreground": "#00d4ff",
+        "background": "#1a1a2e",
+        "ratio": 11.2,
+        "rating": "AAA",
+        "passes_aa": true,
+        "passes_aaa": true
+      },
+      {
+        "foreground": "#a855f7",
+        "background": "#1a1a2e",
+        "ratio": 6.5,
+        "rating": "AA",
+        "passes_aa": true,
+        "passes_aaa": false
+      },
+      {
+        "foreground": "#e2e8f0",
+        "background": "#1a1a2e",
+        "ratio": 13.1,
+        "rating": "AAA",
+        "passes_aa": true,
+        "passes_aaa": true
+      }
+    ],
+    "wcag_standards": {
+      "aa_normal_text": 4.5,
+      "aa_large_text": 3.0,
+      "aaa_normal_text": 7.0,
+      "aaa_large_text": 4.5
+    }
+  },
+  "export_formats": {
+    "web": [
+      "HEX",
+      "RGB",
+      "HSL",
+      "CSS Custom Properties"
+    ],
+    "print": [
+      "CMYK",
+      "Pantone"
+    ],
+    "design_tools": [
+      "Adobe Swatch (.ase)",
+      "Sketch Palette",
+      "Figma Styles",
+      "Canva Brand Kit"
+    ]
+  }
+}
