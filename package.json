@@ -1,0 +1,46 @@
+{
+  "name": "ferasys-web",
+  "version": "1.0.0",
+  "description": "Feral Systems - Information Systems for Complex Problems",
+  "scripts": {
+    "optimize:html": "html-minifier --collapse-whitespace --remove-comments --minify-css --minify-js -o index.min.html index.html",
+    "optimize:css": "cleancss -o styles.min.css styles.css",
+    "optimize:images": "imagemin *.{jpg,png,webp} --out-dir=optimized",
+    "compress:gzip": "gzip -9 -k index.html styles.css",
+    "compress:brotli": "brotli -9 -k index.html styles.css",
+    "compress": "npm run compress:gzip && npm run compress:brotli",
+    "build:optimize": "npm run optimize:html && npm run optimize:css",
+    "build": "echo 'Build complete - using unminified files with compression'",
+    "deploy:local": "./deploy.sh",
+    "clean": "rm -f *.gz *.br *.min.html *.min.css",
+    "test:compression": "ls -lh index.html* styles.css* | awk '{print $9, $5}'",
+    "lighthouse": "lighthouse https://ferasys.com --view --preset=desktop",
+    "lighthouse:mobile": "lighthouse https://ferasys.com --view --preset=mobile"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/logich/ferasys-web.git"
+  },
+  "keywords": [
+    "feral-systems",
+    "shadow-it",
+    "nudge-theory",
+    "behavioral-science",
+    "information-systems",
+    "ai",
+    "generative-ai"
+  ],
+  "author": "Feral Systems",
+  "license": "UNLICENSED",
+  "private": true,
+  "devDependencies": {
+    "html-minifier": "^4.0.0",
+    "clean-css-cli": "^5.6.3",
+    "imagemin-cli": "^7.0.0",
+    "imagemin-webp": "^7.0.0",
+    "lighthouse": "^11.0.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

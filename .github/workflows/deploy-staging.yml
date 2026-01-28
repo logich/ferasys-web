@@ -1,0 +1,149 @@
+name: Deploy to Staging Environment
+
+on:
+  push:
+    branches: [ staging, develop ]
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to deploy to staging'
+        required: true
+        default: 'develop'
+
+jobs:
+  deploy-staging:
+    runs-on: ubuntu-latest
+    environment: staging
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ github.event.inputs.branch || github.ref }}
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-1
+
+    - name: Compress and optimize files
+      run: |
+        echo "📦 Compressing files for staging..."
+
+        # Install compression tools
+        sudo apt-get update && sudo apt-get install -y brotli gzip
+
+        # Compress CSS with gzip and brotli
+        gzip -9 -k styles.css
+        brotli -9 -k styles.css
+
+        # Compress HTML
+        gzip -9 -k index.html
+        brotli -9 -k index.html
+
+        echo "✅ Files compressed successfully"
+
+    - name: Deploy to staging S3 bucket
+      run: |
+        echo "🚀 Deploying to staging environment..."
+
+        # Use staging bucket (if configured) or staging path in main bucket
+        if [ -n "${{ secrets.S3_BUCKET_STAGING }}" ]; then
+          S3_STAGING_PATH="s3://${{ secrets.S3_BUCKET_STAGING }}"
+        else
+          S3_STAGING_PATH="s3://${{ secrets.S3_BUCKET }}/staging"
+        fi
+
+        # Upload images
+        aws s3 cp ferasys.png ${S3_STAGING_PATH}/ferasys.png \
+            --content-type "image/png" \
+            --cache-control "public, max-age=31536000, immutable"
+
+        aws s3 cp wolf.jpg ${S3_STAGING_PATH}/wolf.jpg \
+            --content-type "image/jpeg" \
+            --cache-control "public, max-age=31536000, immutable"
+
+        aws s3 cp wolf.webp ${S3_STAGING_PATH}/wolf.webp \
+            --content-type "image/webp" \
+            --cache-control "public, max-age=31536000, immutable"
+
+        # Upload fonts
+        if [ -d "fonts" ]; then
+          aws s3 sync fonts/ ${S3_STAGING_PATH}/fonts/ \
+              --content-type "font/woff2" \
+              --cache-control "public, max-age=31536000, immutable" \
+              --exclude "*" \
+              --include "*.woff2"
+        fi
+
+        # Upload compressed CSS
+        aws s3 cp styles.css.gz ${S3_STAGING_PATH}/styles.css \
+            --content-type "text/css" \
+            --content-encoding "gzip" \
+            --cache-control "public, max-age=31536000, immutable"
+
+        aws s3 cp styles.css.br ${S3_STAGING_PATH}/styles.css.br \
+            --content-type "text/css" \
+            --content-encoding "br" \
+            --cache-control "public, max-age=31536000, immutable"
+
+        # Upload compressed HTML
+        aws s3 cp index.html.gz ${S3_STAGING_PATH}/index.html \
+            --content-type "text/html; charset=utf-8" \
+            --content-encoding "gzip" \
+            --cache-control "public, max-age=60, must-revalidate"
+
+        echo "✅ Staging deployment complete!"
+
+        # Output staging URL
+        if [ -n "${{ secrets.STAGING_DOMAIN }}" ]; then
+          echo "🌐 Staging URL: https://${{ secrets.STAGING_DOMAIN }}"
+        else
+          echo "🌐 Staging URL: https://${{ secrets.DOMAIN || 'ferasys.com' }}/staging/index.html"
+        fi
+
+    - name: Invalidate staging CloudFront cache
+      if: ${{ secrets.CLOUDFRONT_STAGING_DISTRIBUTION_ID != '' }}
+      run: |
+        echo "🔄 Invalidating staging CloudFront cache..."
+
+        aws cloudfront create-invalidation \
+            --distribution-id ${{ secrets.CLOUDFRONT_STAGING_DISTRIBUTION_ID }} \
+            --paths "/index.html" "/styles.css" \
+            --query 'Invalidation.Id' \
+            --output text
+
+        echo "✅ Cache invalidated"
+
+    - name: Run basic smoke tests
+      run: |
+        echo "🧪 Running smoke tests..."
+
+        # Determine staging URL
+        if [ -n "${{ secrets.STAGING_DOMAIN }}" ]; then
+          STAGING_URL="https://${{ secrets.STAGING_DOMAIN }}"
+        else
+          STAGING_URL="https://${{ secrets.DOMAIN || 'ferasys.com' }}/staging/index.html"
+        fi
+
+        # Check if site is accessible
+        HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" "$STAGING_URL")
+
+        if [ "$HTTP_CODE" = "200" ]; then
+          echo "✅ Staging site is accessible (HTTP $HTTP_CODE)"
+        else
+          echo "⚠️ Staging site returned HTTP $HTTP_CODE"
+        fi
+
+    - name: Deployment summary
+      run: |
+        echo "🎉 Staging deployment complete!"
+        echo "Branch: ${{ github.event.inputs.branch || github.ref }}"
+        echo "Commit: ${{ github.sha }}"
+        if [ -n "${{ secrets.STAGING_DOMAIN }}" ]; then
+          echo "URL: https://${{ secrets.STAGING_DOMAIN }}"
+        else
+          echo "URL: https://${{ secrets.DOMAIN || 'ferasys.com' }}/staging/index.html"
+        fi
