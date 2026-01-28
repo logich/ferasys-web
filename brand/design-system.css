@@ -1,0 +1,487 @@
+/**
+ * Feral Systems Design System
+ * Version 1.0
+ *
+ * This file contains all design tokens as CSS custom properties.
+ * Import this file first in your stylesheets to use the design system.
+ */
+
+:root {
+  /* ============================================
+     COLOR PALETTE
+     ============================================ */
+
+  /* Primary Brand Colors */
+  --color-cyan: #00d4ff;
+  --color-purple: #a855f7;
+  --color-white: #ffffff;
+  --color-light-gray: #e2e8f0;
+
+  /* Background Colors */
+  --color-deep-navy: #1a1a2e;
+  --color-dark-blue: #16213e;
+  --color-rich-blue: #0f3460;
+
+  /* Semantic Colors */
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-info: #3b82f6;
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(45deg, var(--color-cyan), var(--color-purple));
+  --gradient-accent: linear-gradient(90deg, var(--color-purple), var(--color-cyan));
+  --gradient-background: linear-gradient(135deg, var(--color-deep-navy) 0%, var(--color-dark-blue) 50%, var(--color-rich-blue) 100%);
+
+  /* Transparent Overlays */
+  --overlay-glass: rgba(255, 255, 255, 0.08);
+  --overlay-dark: rgba(0, 0, 0, 0.3);
+  --overlay-purple: rgba(168, 85, 247, 0.15);
+  --overlay-border: rgba(255, 255, 255, 0.1);
+
+  /* ============================================
+     TYPOGRAPHY
+     ============================================ */
+
+  /* Font Families */
+  --font-display: 'Lastica', 'Arial', 'Helvetica', sans-serif;
+  --font-body: 'Anonymous Pro', 'Courier New', monospace;
+
+  /* Font Sizes */
+  --font-size-h1: 3.5rem;      /* 56px */
+  --font-size-h2: 2.5rem;      /* 40px */
+  --font-size-h3: 2rem;        /* 32px */
+  --font-size-h4: 1.5rem;      /* 24px */
+  --font-size-h5: 1.25rem;     /* 20px */
+  --font-size-body: 1.125rem;  /* 18px */
+  --font-size-small: 0.875rem; /* 14px */
+  --font-size-caption: 0.75rem;/* 12px */
+
+  /* Font Weights */
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+
+  /* Line Heights */
+  --line-height-heading: 1.2;
+  --line-height-body: 1.8;
+  --line-height-caption: 1.5;
+
+  /* Letter Spacing */
+  --letter-spacing-tight: -0.5px;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 1px;
+  --letter-spacing-wider: 2px;
+  --letter-spacing-widest: 3px;
+
+  /* ============================================
+     SPACING
+     ============================================ */
+
+  --space-xs: 0.25rem;   /* 4px */
+  --space-sm: 0.5rem;    /* 8px */
+  --space-md: 1rem;      /* 16px */
+  --space-lg: 1.5rem;    /* 24px */
+  --space-xl: 2rem;      /* 32px */
+  --space-2xl: 3rem;     /* 48px */
+  --space-3xl: 4rem;     /* 64px */
+  --space-4xl: 6rem;     /* 96px */
+  --space-5xl: 8rem;     /* 128px */
+
+  /* Section Spacing */
+  --section-padding: 6.25rem;  /* 100px */
+  --container-padding: 2rem;   /* 32px */
+
+  /* ============================================
+     LAYOUT
+     ============================================ */
+
+  /* Breakpoints (for reference in media queries) */
+  --breakpoint-mobile: 480px;
+  --breakpoint-tablet: 768px;
+  --breakpoint-desktop: 1200px;
+  --breakpoint-wide: 1600px;
+
+  /* Container Widths */
+  --container-max-width: 1200px;
+  --content-max-width: 800px;
+
+  /* ============================================
+     BORDERS & RADIUS
+     ============================================ */
+
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 20px;
+  --radius-lg: 50px;
+  --radius-full: 9999px;
+
+  /* Border Widths */
+  --border-thin: 1px;
+  --border-medium: 2px;
+  --border-thick: 3px;
+
+  /* ============================================
+     SHADOWS
+     ============================================ */
+
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --shadow-hover: 0 12px 48px rgba(0, 212, 255, 0.3);
+  --shadow-focus: 0 0 20px rgba(168, 85, 247, 0.5);
+  --shadow-elevated: 0 20px 60px rgba(0, 0, 0, 0.4);
+
+  /* ============================================
+     EFFECTS
+     ============================================ */
+
+  /* Backdrop Blur */
+  --blur-sm: blur(5px);
+  --blur-md: blur(10px);
+  --blur-lg: blur(15px);
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.5s ease;
+
+  /* Transform Values */
+  --transform-hover-lift: translateY(-5px);
+  --transform-hover-scale: scale(1.05);
+
+  /* ============================================
+     Z-INDEX LAYERS
+     ============================================ */
+
+  --z-base: 0;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-fixed: 300;
+  --z-modal-backdrop: 400;
+  --z-modal: 500;
+  --z-popover: 600;
+  --z-tooltip: 700;
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+/* Text Gradients */
+.text-gradient {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-accent {
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glass Morphism */
+.glass {
+  background: var(--overlay-glass);
+  backdrop-filter: var(--blur-md);
+  border: var(--border-thin) solid var(--overlay-border);
+}
+
+.glass-dark {
+  background: var(--overlay-dark);
+  backdrop-filter: var(--blur-lg);
+}
+
+/* Gradient Backgrounds */
+.bg-gradient-primary {
+  background: var(--gradient-primary);
+}
+
+.bg-gradient-accent {
+  background: var(--gradient-accent);
+}
+
+.bg-gradient-background {
+  background: var(--gradient-background);
+}
+
+/* Gradient Borders */
+.border-gradient-top {
+  border-top: var(--border-thick) solid;
+  border-image: var(--gradient-primary) 1;
+}
+
+/* Shadows */
+.shadow-card {
+  box-shadow: var(--shadow-card);
+}
+
+.shadow-hover {
+  box-shadow: var(--shadow-hover);
+}
+
+.shadow-focus {
+  box-shadow: var(--shadow-focus);
+}
+
+/* Transitions */
+.transition {
+  transition: all var(--transition-base);
+}
+
+/* Hover Effects */
+.hover-lift {
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.hover-lift:hover {
+  transform: var(--transform-hover-lift);
+  box-shadow: var(--shadow-hover);
+}
+
+/* ============================================
+   COMPONENT BASE STYLES
+   ============================================ */
+
+/* Buttons */
+.btn {
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-bold);
+  padding: var(--space-md) var(--space-2xl);
+  border-radius: var(--radius-lg);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.btn-primary {
+  background: var(--gradient-primary);
+  color: var(--color-white);
+  box-shadow: var(--shadow-card);
+}
+
+.btn-primary:hover {
+  box-shadow: var(--shadow-hover);
+  transform: var(--transform-hover-lift);
+}
+
+/* Cards */
+.card {
+  background: var(--overlay-glass);
+  backdrop-filter: var(--blur-md);
+  border-radius: var(--radius-md);
+  padding: var(--space-2xl);
+  box-shadow: var(--shadow-card);
+  transition: all var(--transition-base);
+}
+
+.card-gradient-border {
+  border-top: var(--border-thick) solid;
+  border-image: var(--gradient-primary) 1;
+}
+
+.card:hover {
+  transform: var(--transform-hover-lift);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-heading);
+  margin-bottom: var(--space-lg);
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  letter-spacing: var(--letter-spacing-widest);
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  letter-spacing: var(--letter-spacing-wider);
+}
+
+h3 {
+  font-size: var(--font-size-h3);
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+h4 {
+  font-size: var(--font-size-h4);
+}
+
+h5 {
+  font-size: var(--font-size-h5);
+}
+
+/* Body Text */
+body {
+  font-family: var(--font-body);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  color: var(--color-white);
+  background: var(--gradient-background);
+}
+
+p {
+  margin-bottom: var(--space-lg);
+}
+
+/* Links */
+a {
+  color: var(--color-cyan);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-purple);
+}
+
+/* ============================================
+   RESPONSIVE UTILITIES
+   ============================================ */
+
+@media (max-width: 768px) {
+  :root {
+    --font-size-h1: 2.5rem;  /* 40px */
+    --font-size-h2: 2rem;    /* 32px */
+    --font-size-h3: 1.5rem;  /* 24px */
+    --font-size-body: 1rem;  /* 16px */
+
+    --section-padding: 3rem; /* 48px */
+    --container-padding: 1rem; /* 16px */
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --font-size-h1: 2rem;    /* 32px */
+    --font-size-h2: 1.5rem;  /* 24px */
+    --font-size-h3: 1.25rem; /* 20px */
+  }
+}
+
+/* ============================================
+   ANIMATION KEYFRAMES
+   ============================================ */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+/* Animation Utility Classes */
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.6s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.6s ease-out;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.4s ease-out;
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+/* Focus States */
+*:focus {
+  outline: 2px solid var(--color-cyan);
+  outline-offset: 2px;
+}
+
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--color-cyan);
+  outline-offset: 2px;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Screen Reader Only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
