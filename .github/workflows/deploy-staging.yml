@@ -105,12 +105,14 @@ jobs:
         fi
 
     - name: Invalidate staging CloudFront cache
-      if: ${{ secrets.CLOUDFRONT_STAGING_DISTRIBUTION_ID != '' }}
+      env:
+        CLOUDFRONT_STAGING_DISTRIBUTION_ID: ${{ secrets.CLOUDFRONT_STAGING_DISTRIBUTION_ID }}
+      if: env.CLOUDFRONT_STAGING_DISTRIBUTION_ID != ''
       run: |
         echo "🔄 Invalidating staging CloudFront cache..."
 
         aws cloudfront create-invalidation \
-            --distribution-id ${{ secrets.CLOUDFRONT_STAGING_DISTRIBUTION_ID }} \
+            --distribution-id "$CLOUDFRONT_STAGING_DISTRIBUTION_ID" \
             --paths "/index.html" "/styles.css" \
             --query 'Invalidation.Id' \
             --output text
