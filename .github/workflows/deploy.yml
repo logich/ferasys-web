@@ -136,6 +136,25 @@ jobs:
               --exclude ".DS_Store"
         fi
 
+        # Agent / SEO discovery files — short cache so we can iterate
+        if [ -f "robots.txt" ]; then
+          aws s3 cp robots.txt ${{ steps.env.outputs.S3_PATH }}/robots.txt \
+              --content-type "text/plain; charset=utf-8" \
+              --cache-control "public, max-age=3600"
+        fi
+
+        if [ -f "sitemap.xml" ]; then
+          aws s3 cp sitemap.xml ${{ steps.env.outputs.S3_PATH }}/sitemap.xml \
+              --content-type "application/xml; charset=utf-8" \
+              --cache-control "public, max-age=3600"
+        fi
+
+        if [ -f "llms.txt" ]; then
+          aws s3 cp llms.txt ${{ steps.env.outputs.S3_PATH }}/llms.txt \
+              --content-type "text/markdown; charset=utf-8" \
+              --cache-control "public, max-age=3600"
+        fi
+
         # Upload fonts with long cache
         if [ -d "fonts" ]; then
           aws s3 sync fonts/ ${{ steps.env.outputs.S3_PATH }}/fonts/ \
