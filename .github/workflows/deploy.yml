@@ -101,6 +101,41 @@ jobs:
             --content-type "image/webp" \
             --cache-control "public, max-age=31536000, immutable"
 
+        # Brand mark (cropped square) — used in header logo and OG image
+        aws s3 cp wolf-mark.webp ${{ steps.env.outputs.S3_PATH }}/wolf-mark.webp \
+            --content-type "image/webp" \
+            --cache-control "public, max-age=31536000, immutable"
+
+        aws s3 cp wolf-mark.png ${{ steps.env.outputs.S3_PATH }}/wolf-mark.png \
+            --content-type "image/png" \
+            --cache-control "public, max-age=31536000, immutable"
+
+        # Favicons
+        aws s3 cp favicon-32.png ${{ steps.env.outputs.S3_PATH }}/favicon-32.png \
+            --content-type "image/png" \
+            --cache-control "public, max-age=31536000, immutable"
+
+        aws s3 cp favicon-16.png ${{ steps.env.outputs.S3_PATH }}/favicon-16.png \
+            --content-type "image/png" \
+            --cache-control "public, max-age=31536000, immutable"
+
+        aws s3 cp apple-touch-icon.png ${{ steps.env.outputs.S3_PATH }}/apple-touch-icon.png \
+            --content-type "image/png" \
+            --cache-control "public, max-age=31536000, immutable"
+
+        # Lastica wordmark (outlined, no font dependency)
+        aws s3 cp wordmark.svg ${{ steps.env.outputs.S3_PATH }}/wordmark.svg \
+            --content-type "image/svg+xml" \
+            --cache-control "public, max-age=31536000, immutable"
+
+        # Full brand kit (logos, guidelines, design system) for reference and
+        # direct linkability. Cached for a day so updates roll out faster.
+        if [ -d "brand" ]; then
+          aws s3 sync brand/ ${{ steps.env.outputs.S3_PATH }}/brand/ \
+              --cache-control "public, max-age=86400" \
+              --exclude ".DS_Store"
+        fi
+
         # Upload fonts with long cache
         if [ -d "fonts" ]; then
           aws s3 sync fonts/ ${{ steps.env.outputs.S3_PATH }}/fonts/ \
