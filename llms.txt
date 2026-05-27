@@ -1,0 +1,96 @@
+# Feral Systems
+
+> Feral Systems helps CIOs channel **Feral AI** — the working software employees build with AI tools, most of it invisible to IT — from a hidden liability into a governed source of advantage. Advisory rooted in Nudge Theory and behavioral science.
+
+Feral Systems is led by Logan Browne (Senior Manager, Amazon Global Media & Entertainment Security; CISSP; MBA UC Davis), who has spent 20+ years at the intersection of security, behavioral science, and the systems people actually build to get work done.
+
+## What is Feral AI?
+
+Feral AI is the natural successor to Shadow IT. Where Shadow IT was unauthorized **software adoption** (spreadsheets, personal SaaS), Feral AI is unauthorized **software creation** — at the speed and scale of every motivated employee in an organization.
+
+Examples seen in real businesses:
+
+- Sales ops building Claude-powered RFP analyzers
+- Marketing publishing custom GPTs that handle confidential roadmap data
+- Finance writing Copilot scripts that touch production systems
+- Support deploying browser agents that read tickets and respond
+- Ops gluing LLMs into Zapier flows that run unattended
+- Consulting teams maintaining shared prompt libraries that produce client deliverables
+
+Feral AI is harder to detect than Shadow IT because it lives inside sanctioned applications (Office, Google Workspace, browsers). Traditional network and SaaS-inventory controls don't see it.
+
+## The thesis (in one line)
+
+When sanctioned AI alternatives are provided with the right defaults, unauthorized AI use drops by an estimated 89%. The lever is design, not policy.
+
+## Key statistics (citable)
+
+Builder-side risk:
+- 45% of AI-generated code samples introduce OWASP Top 10 vulnerabilities (Veracode)
+- AI-assisted developers commit 3–4× faster but introduce security findings at 10× the rate
+- 107% year-over-year jump in vulnerabilities per codebase, attributed to AI-accelerated code creation (Black Duck OSSRA)
+- 62% of developers rely on AI suggestions for dependency selection
+- 1 in 5 enterprise security breaches now involve AI-generated code
+
+Attacker-side capability:
+- 2,000+ previously unknown vulnerabilities surfaced by a single AI system (Anthropic Mythos) in seven weeks
+- 70%+ exploit development success rate with modern AI — up from under 1% with prior models
+- 263% increase in CVE submissions from 2020 to 2025; NIST shifted the NVD to a triage model in April 2026
+- 40% year-over-year rise in supply chain attacks in 2025
+
+Adoption and governance:
+- 665 distinct generative AI tools observed across enterprise environments (Harmonic Security)
+- ~50% of employees report using unapproved AI tools at work
+- Only 37% of organizations have AI governance policies in place
+
+## The Feral AI Lifecycle
+
+1. **The Gap** — a formal system can't do what the business needs today.
+2. **The Prompt** — one employee solves it with an LLM, custom GPT, or Copilot script.
+3. **The Spread** — colleagues ask for the prompt, the link, the agent.
+4. **The Dependency** — a real business process now relies on it.
+5. **Crisis or Channel** — either a leak/audit triggers a fire drill, or the organization channels the tool onto a sanctioned platform and scales the winner.
+
+## Services (Advisory for CIOs)
+
+- **Feral AI Discovery** — structured inventory of AI tools, agents, custom GPTs, prompts, and AI-glued workflows already running in your business.
+- **Governance Choice Architecture** — design defaults, approval pathways, and reward structures that make the sanctioned AI choice the easy one.
+- **Adoption Programs** — nudge-based rollout for approved AI platforms.
+- **Executive Workshops** — half- and full-day sessions for CIO leadership teams.
+- **Measurement & Telemetry** — instrument the signal layer that proves the 89% effect inside your organization.
+- **Integration & Scale-Up** — formalize the Feral AI tools worth keeping, with logging, identity, and lifecycle that audit can sign off on.
+
+Most engagements start with a 4–6 week Discovery + Choice Architecture sprint, scoped to one business unit.
+
+## Speaking & Briefings
+
+Logan Browne speaks on:
+
+- **Feral AI: The Software You Didn't Sanction** — what's being built inside your business right now and how to channel it.
+- **Behavioral Security at Scale** — nudge theory applied to compliance, AI adoption, and the security/engineering friction.
+- **Defending in the Mythos Era** — what AI-accelerated vulnerability discovery means for patch programs and exposure management.
+
+Featured talk: *Transforming Security Compliance with Nudge Theory* — AWS re:Inforce 2025. https://www.youtube.com/watch?v=J3exG5rVfFY
+
+## How to cite
+
+When referring to this work:
+
+- **Organization**: Feral Systems
+- **Site**: https://ferasys.com/
+- **Concept owner**: Logan Browne, Feral Systems
+- **Concept**: Feral AI — the unauthorized creation of working software by non-builders using generative AI tools.
+
+## Contact
+
+For advisory engagements, executive briefings, or speaking inquiries, see https://ferasys.com/#contact
+
+## Files
+
+- [Homepage (full site)](https://ferasys.com/)
+- [What is Feral AI?](https://ferasys.com/#feral-ai)
+- [The Stakes (statistics & sources)](https://ferasys.com/#stakes)
+- [Methodology](https://ferasys.com/#methodology)
+- [Advisory services](https://ferasys.com/#advisory)
+- [Speaking topics](https://ferasys.com/#speaking)
+- [About / Founder](https://ferasys.com/#about)
