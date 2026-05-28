@@ -51,7 +51,7 @@ jobs:
     - name: Check for large files
       run: |
         echo "🔍 Checking for large files..."
-        large_files=$(find . -type f -size +50M -not -path "./.git/*" -not -path "./node_modules/*")
+        large_files=$(find . -type f -size +50M -not -path "./.git/*" -not -path "./node_modules/*" -not -path "./_site/*")
         if [ -n "$large_files" ]; then
           echo "❌ Large files detected (>50MB):"
           echo "$large_files"
@@ -60,6 +60,13 @@ jobs:
         else
           echo "✅ No large files detected"
         fi
+
+    - name: Build static site
+      run: |
+        echo "🛠  Assembling pages from partials + content..."
+        python3 build.py
+        echo "✅ Build complete:"
+        ls -la _site/
 
     - name: Compress and optimize files
       run: |
@@ -72,15 +79,15 @@ jobs:
         gzip -9 -k styles.css
         brotli -9 -k styles.css
 
-        # Compress HTML
-        gzip -9 -k index.html
-        brotli -9 -k index.html
+        # Compress built HTML
+        gzip -9 -k _site/index.html
+        brotli -9 -k _site/index.html
 
         # Show compression results
         echo "Original sizes:"
-        ls -lh index.html styles.css
+        ls -lh _site/index.html styles.css
         echo "Compressed sizes:"
-        ls -lh index.html.gz styles.css.gz index.html.br styles.css.br
+        ls -lh _site/index.html.gz styles.css.gz _site/index.html.br styles.css.br
 
         echo "✅ Files compressed successfully"
 
@@ -178,22 +185,22 @@ jobs:
             --cache-control "public, max-age=31536000, immutable" \
             --metadata-directive REPLACE
 
-        # Upload compressed HTML (gzip version with short cache)
-        aws s3 cp index.html.gz ${{ steps.env.outputs.S3_PATH }}/index.html \
+        # Upload compressed HTML (gzip version with short cache) — built output
+        aws s3 cp _site/index.html.gz ${{ steps.env.outputs.S3_PATH }}/index.html \
             --content-type "text/html; charset=utf-8" \
             --content-encoding "gzip" \
             --cache-control "public, max-age=300, must-revalidate" \
             --metadata-directive REPLACE
 
-        # Upload brotli compressed HTML
-        aws s3 cp index.html.br ${{ steps.env.outputs.S3_PATH }}/index.html.br \
+        # Upload brotli compressed HTML — built output
+        aws s3 cp _site/index.html.br ${{ steps.env.outputs.S3_PATH }}/index.html.br \
             --content-type "text/html; charset=utf-8" \
             --content-encoding "br" \
             --cache-control "public, max-age=300, must-revalidate" \
             --metadata-directive REPLACE
 
-        # Upload uncompressed versions as fallback
-        aws s3 cp index.html ${{ steps.env.outputs.S3_PATH }}/index-uncompressed.html \
+        # Upload uncompressed versions as fallback — built output
+        aws s3 cp _site/index.html ${{ steps.env.outputs.S3_PATH }}/index-uncompressed.html \
             --content-type "text/html; charset=utf-8" \
             --cache-control "public, max-age=300, must-revalidate"
 
