@@ -84,3 +84,6 @@ todo.txt
 
 # AWS CLI Output
 aws-cli-output.json
+
+# Static site build output
+_site/
